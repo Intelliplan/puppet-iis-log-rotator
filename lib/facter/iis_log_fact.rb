@@ -1,5 +1,5 @@
 require 'facter'
-require 'fatcer/iis_log_dir_parser'
+require 'facter/iis_log_dir_parser'
 
 Facter.("iis_root_log_dir") do
   confine :kernel => "windows"
