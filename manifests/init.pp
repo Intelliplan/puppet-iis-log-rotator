@@ -13,7 +13,7 @@ class iis_log_rotator(
     ensure      => present,
     enabled     => true,
     command     => $remove_log_command,
-    argument    => $::powershell_location,
+    arguments   => $::powershell_location,
     trigger     => $how_often_trigger,
     working_dir => $::iis_root_log_dir,
   }
