@@ -7,7 +7,7 @@ class iis_log_rotator(
   }
 ) {
 
-  $remove_log_command = "ls . -include *.log -recurse | where-object {\$_.LastWriteTime -lt (Get-Date).AddDays(-${how_old_days})} | remove-item"
+  $remove_log_command = "(ls . -include *.log -recurse) | where-object {\$_.LastWriteTime -lt (Get-Date).AddDays(-\${how_old_days})} | % { \$_.Delete() }"
 
   scheduled_task { 'Remove Old IIS Logs':
     ensure      => present,
